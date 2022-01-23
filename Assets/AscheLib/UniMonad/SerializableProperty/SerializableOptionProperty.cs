@@ -27,7 +27,7 @@ namespace AscheLib.UniMonad {
 
 		public IOptionResult<T> Run() {
 			if (_isJust) {
-				return Option.Just(_value).Run();
+				return Option.Return(_value).Run();
 			}
 			else {
 				return Option.None<T>().Run();
