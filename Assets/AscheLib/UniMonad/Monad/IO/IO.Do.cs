@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public T RunIO() {
-				T result = _self.RunIO();
+			public T Run() {
+				T result = _self.Run();
 				_action(result);
 				return result;
 			}

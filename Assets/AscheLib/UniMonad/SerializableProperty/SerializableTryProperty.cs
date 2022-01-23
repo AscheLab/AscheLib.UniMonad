@@ -28,12 +28,12 @@ namespace AscheLib.UniMonad {
 			_isSucceeded = isSucceeded;
 		}
 
-		public ITryResult<T> RunTry() {
+		public ITryResult<T> Run() {
 			if (_isSucceeded) {
-				return Try.Return(_succeededValue).RunTry();
+				return Try.Return(_succeededValue).Run();
 			}
 			else {
-				return Try.Throw<T>(new Exception(_faultedMessage)).RunTry();
+				return Try.Throw<T>(new Exception(_faultedMessage)).Run();
 			}
 		}
 	}

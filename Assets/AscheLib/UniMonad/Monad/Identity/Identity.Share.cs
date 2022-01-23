@@ -11,11 +11,11 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_lazy = Lazy.Create<T>(RunSelf);
 			}
-			public T RunIdentity() {
+			public T Run() {
 				return _lazy.Value;
 			}
 			T RunSelf() {
-				return _self.RunIdentity();
+				return _self.Run();
 			}
 		}
 		public static IIdentityMonad<T> Share<T>(this IIdentityMonad<T> self) {

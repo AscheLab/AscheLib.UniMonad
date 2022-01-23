@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AscheLib.UniMonad {
 	public interface IOptionMonad<T> {
-		IOptionResult<T> RunOption();
+		IOptionResult<T> Run();
 	}
 	public interface IOptionResult<T> {
 		T Value { get; }

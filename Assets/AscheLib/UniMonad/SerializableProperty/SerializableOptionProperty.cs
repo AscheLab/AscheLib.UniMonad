@@ -25,12 +25,12 @@ namespace AscheLib.UniMonad {
 			_isJust = isJust;
 		}
 
-		public IOptionResult<T> RunOption() {
+		public IOptionResult<T> Run() {
 			if (_isJust) {
-				return Option.Just(_value).RunOption();
+				return Option.Just(_value).Run();
 			}
 			else {
-				return Option.None<T>().RunOption();
+				return Option.None<T>().Run();
 			}
 		}
 	}

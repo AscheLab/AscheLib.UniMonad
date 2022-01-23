@@ -13,12 +13,12 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public RWSResult<TOutput, TState, TValue> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TValue> Run(TEnvironment environment, TState state) {
 				if(_selector()) {
-					return _thenSource.RunRWS(environment, state);
+					return _thenSource.Run(environment, state);
 				}
 				else {
-					return _elseSource.RunRWS(environment, state);
+					return _elseSource.Run(environment, state);
 				}
 			}
 		}

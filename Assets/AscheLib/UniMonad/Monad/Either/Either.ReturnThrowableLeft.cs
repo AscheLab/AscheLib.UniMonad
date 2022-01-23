@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public ReturnThrowableLeftCore(TLeft value) {
 				_value = value;
 			}
-			public IEitherResult<TLeft, TRight> RunEither() {
+			public IEitherResult<TLeft, TRight> Run() {
 				return new ThrowableLeftResult<TLeft, TRight>(_value);
 			}
 		}

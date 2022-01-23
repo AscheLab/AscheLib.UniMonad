@@ -11,10 +11,10 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public ITryResult<T> RunTry() {
+			public ITryResult<T> Run() {
 				ITryResult<T> selfResult;
 				try {
-					selfResult = _self.RunTry();
+					selfResult = _self.Run();
 					_action(selfResult);
 					return selfResult;
 				}

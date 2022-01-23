@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public ReturnCore(TValue value) {
 				_value = value;
 			}
-			public TValue RunReader(TEnvironment environment) {
+			public TValue Run(TEnvironment environment) {
 				return _value;
 			}
 		}

@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public CreateCore(Func<IEitherResult<TLeft, TRight>> func) {
 				_func = func;
 			}
-			public IEitherResult<TLeft, TRight> RunEither() {
+			public IEitherResult<TLeft, TRight> Run() {
 				return _func();
 			}
 		}

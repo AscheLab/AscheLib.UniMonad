@@ -13,12 +13,12 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public T RunIdentity() {
+			public T Run() {
 				if(_selector()) {
-					return _thenSource.RunIdentity();
+					return _thenSource.Run();
 				}
 				else {
-					return _elseSource.RunIdentity();
+					return _elseSource.Run();
 				}
 			}
 		}

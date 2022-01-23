@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public WriterResult<TOutput, TValue> RunWriter() {
-				WriterResult<TOutput, TValue> result = _self.RunWriter();
+			public WriterResult<TOutput, TValue> Run() {
+				WriterResult<TOutput, TValue> result = _self.Run();
 				_action(result.Output);
 				return result;
 			}

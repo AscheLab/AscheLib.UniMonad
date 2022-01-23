@@ -11,9 +11,9 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public IOptionResult<TResult> RunOption() {
-				IOptionResult<T> result = _self.RunOption();
-				if(!result.IsNone) return _selector(result.Value).RunOption();
+			public IOptionResult<TResult> Run() {
+				IOptionResult<T> result = _self.Run();
+				if(!result.IsNone) return _selector(result.Value).Run();
 				return NoneResult<TResult>.Default;
 			}
 		}
@@ -30,10 +30,10 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public IOptionResult<TResult> RunOption() {
-				IOptionResult<TFirst> selfResult = _self.RunOption();
+			public IOptionResult<TResult> Run() {
+				IOptionResult<TFirst> selfResult = _self.Run();
 				if(!selfResult.IsNone) {
-					IOptionResult<TSecond> secondResult = _selector(selfResult.Value).RunOption();
+					IOptionResult<TSecond> secondResult = _selector(selfResult.Value).Run();
 					if(!secondResult.IsNone) return new JustResult<TResult>(_projector(selfResult.Value, secondResult.Value));
 				}
 				return NoneResult<TResult>.Default;

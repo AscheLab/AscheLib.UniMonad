@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public RWSResult<TOutput, TState, TValue> RunRWS(TEnvironment environment, TState state) {
-				RWSResult<TOutput, TState, TValue> selfResult = _self.RunRWS(environment, state);
+			public RWSResult<TOutput, TState, TValue> Run(TEnvironment environment, TState state) {
+				RWSResult<TOutput, TState, TValue> selfResult = _self.Run(environment, state);
 				_action(selfResult);
 				return selfResult;
 			}

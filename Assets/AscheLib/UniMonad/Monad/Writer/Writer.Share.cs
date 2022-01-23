@@ -11,11 +11,11 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_lazy = Lazy.Create<WriterResult<TOutput, TValue>>(RunSelf);
 			}
-			public WriterResult<TOutput, TValue> RunWriter() {
+			public WriterResult<TOutput, TValue> Run() {
 				return _lazy.Value;
 			}
 			WriterResult<TOutput, TValue> RunSelf() {
-				return _self.RunWriter();
+				return _self.Run();
 			}
 		}
 		public static IWriterMonad<TOutput, TValue> Share<TOutput, TValue>(this IWriterMonad<TOutput, TValue> self) {

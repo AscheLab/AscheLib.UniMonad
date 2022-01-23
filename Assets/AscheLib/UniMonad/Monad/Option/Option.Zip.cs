@@ -13,9 +13,9 @@ namespace AscheLib.UniMonad {
 				_second = second;
 				_resultSelector = resultSelector;
 			}
-			public IOptionResult<TResult> RunOption() {
-				IOptionResult<TFirst> selfResult = _self.RunOption();
-				IOptionResult<TSecond> secondResult = _second.RunOption();
+			public IOptionResult<TResult> Run() {
+				IOptionResult<TFirst> selfResult = _self.Run();
+				IOptionResult<TSecond> secondResult = _second.Run();
 				if(!selfResult.IsNone && !secondResult.IsNone) return new JustResult<TResult>(_resultSelector(selfResult.Value, secondResult.Value));
 				return NoneResult<TResult>.Default;
 			}

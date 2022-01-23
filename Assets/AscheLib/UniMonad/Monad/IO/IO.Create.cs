@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public CreateCore(Func<T> func) {
 				_func = func;
 			}
-			public T RunIO() {
+			public T Run() {
 				return _func();
 			}
 		}

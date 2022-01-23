@@ -13,11 +13,11 @@ namespace AscheLib.UniMonad {
 				_state = state;
 				_lazy = Lazy.Create<StateResult<TState, TValue>>(RunSelf);
 			}
-			public StateResult<TState, TValue> RunIdentity() {
+			public StateResult<TState, TValue> Run() {
 				return _lazy.Value;
 			}
 			StateResult<TState, TValue> RunSelf() {
-				return _self.RunState(_state);
+				return _self.Run(_state);
 			}
 		}
 		public static IIdentityMonad<StateResult<TState, TValue>> Share<TState, TValue>(this IStateMonad<TState, TValue> self, TState state) {

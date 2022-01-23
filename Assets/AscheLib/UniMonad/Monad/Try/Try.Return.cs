@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public ReturnCore(T value) {
 				_value = value;
 			}
-			public ITryResult<T> RunTry() {
+			public ITryResult<T> Run() {
 				return new Success<T>(_value);
 			}
 		}

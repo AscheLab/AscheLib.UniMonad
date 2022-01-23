@@ -11,9 +11,9 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public WriterResult<TOutput, TResult> RunWriter() {
-				WriterResult<TOutput, TValue> result = _self.RunWriter();
-				return _selector(result.Value).RunWriter();
+			public WriterResult<TOutput, TResult> Run() {
+				WriterResult<TOutput, TValue> result = _self.Run();
+				return _selector(result.Value).Run();
 			}
 		}
 		public static IWriterMonad<TOutput, TResult> SelectMany<TOutput, TValue, TResult>(this IWriterMonad<TOutput, TValue> self, Func<TValue, IWriterMonad<TOutput, TResult>> selector) {
@@ -29,9 +29,9 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public WriterResult<TOutput, TResult> RunWriter() {
-				WriterResult<TOutput, TFirst> firstResult = _self.RunWriter();
-				WriterResult<TOutput, TSecond> secondResult = _selector(firstResult.Value).RunWriter();
+			public WriterResult<TOutput, TResult> Run() {
+				WriterResult<TOutput, TFirst> firstResult = _self.Run();
+				WriterResult<TOutput, TSecond> secondResult = _selector(firstResult.Value).Run();
 				return WriterResult.Create(_projector(firstResult.Value, secondResult.Value), firstResult.Output.Concat(secondResult.Output));
 			}
 		}

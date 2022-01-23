@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_environment = environment;
 			}
-			public StateResult<TState, RWSResult<TOutput, TState, TValue>> RunState(TState state) {
-				return StateResult.Create(state, _self.RunRWS(_environment, state));
+			public StateResult<TState, RWSResult<TOutput, TState, TValue>> Run(TState state) {
+				return StateResult.Create(state, _self.Run(_environment, state));
 			}
 		}
 		public static IStateMonad<TState, RWSResult<TOutput, TState, TValue>> ShareEnvironment<TEnvironment, TOutput, TState, TValue>(this IRWSMonad<TEnvironment, TOutput, TState, TValue> self, TEnvironment environment) {

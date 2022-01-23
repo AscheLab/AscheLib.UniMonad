@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public ThrowCore(Exception exception) {
 				_exception = exception;
 			}
-			public ITryResult<T> RunTry() {
+			public ITryResult<T> Run() {
 				return new Failure<T>(_exception);
 			}
 		}

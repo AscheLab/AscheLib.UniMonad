@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public ReturnCore(T value) {
 				_value = value;
 			}
-			public T RunIdentity() {
+			public T Run() {
 				return _value;
 			}
 		}

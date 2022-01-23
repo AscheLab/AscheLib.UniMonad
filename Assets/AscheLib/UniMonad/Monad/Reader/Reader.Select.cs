@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public TResult RunReader(TEnvironment environment) {
-				return _selector(_self.RunReader(environment));
+			public TResult Run(TEnvironment environment) {
+				return _selector(_self.Run(environment));
 			}
 		}
 		public static IReaderMonad<TEnvironment, TResult> Select<TEnvironment, TValue, TResult>(this IReaderMonad<TEnvironment, TValue> self, Func<TValue, TResult> selector) {

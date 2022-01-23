@@ -9,8 +9,8 @@ namespace AscheLib.UniMonad {
 			public AsThrowableCore(IEitherMonad<TLeft, TRight> self) {
 				_self = self;
 			}
-			public IEitherResult<TLeft, TRight> RunEither() {
-				IEitherResult<TLeft, TRight> result = _self.RunEither();
+			public IEitherResult<TLeft, TRight> Run() {
+				IEitherResult<TLeft, TRight> result = _self.Run();
 				if(result.IsLeft) {
 					return new ThrowableLeftResult<TLeft, TRight>(result.Left);
 				}

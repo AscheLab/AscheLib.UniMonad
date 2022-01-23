@@ -13,12 +13,12 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public IEitherResult<TLeft, TRight> RunEither() {
+			public IEitherResult<TLeft, TRight> Run() {
 				if(_selector()) {
-					return _thenSource.RunEither();
+					return _thenSource.Run();
 				}
 				else {
-					return _elseSource.RunEither();
+					return _elseSource.Run();
 				}
 			}
 		}

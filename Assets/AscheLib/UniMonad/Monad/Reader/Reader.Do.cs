@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public TValue RunReader(TEnvironment environment) {
-				TValue result = _self.RunReader(environment);
+			public TValue Run(TEnvironment environment) {
+				TValue result = _self.Run(environment);
 				_action(result);
 				return result;
 			}

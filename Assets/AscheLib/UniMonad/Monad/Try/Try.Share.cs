@@ -11,11 +11,11 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_lazy = Lazy.Create<ITryResult<T>>(RunSelf);
 			}
-			public ITryResult<T> RunTry() {
+			public ITryResult<T> Run() {
 				return _lazy.Value;
 			}
 			ITryResult<T> RunSelf() {
-				return _self.RunTry();
+				return _self.Run();
 			}
 		}
 		public static ITryMonad<T> Share<T>(this ITryMonad<T> self) {

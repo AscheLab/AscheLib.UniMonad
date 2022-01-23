@@ -28,12 +28,12 @@ namespace AscheLib.UniMonad {
 			_isRight = isRight;
 		}
 
-		public IEitherResult<TLeft, TRight> RunEither () {
+		public IEitherResult<TLeft, TRight> Run () {
 			if(_isRight) {
-				return Either.ReturnRight<TLeft, TRight>(_right).RunEither();
+				return Either.ReturnRight<TLeft, TRight>(_right).Run();
 			}
 			else {
-				return Either.ReturnLeft<TLeft, TRight>(_left).RunEither();
+				return Either.ReturnLeft<TLeft, TRight>(_left).Run();
 			}
 		}
 	}

@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public CreateCore(Func<ITryResult<T>> func) {
 				_func = func;
 			}
-			public ITryResult<T> RunTry() {
+			public ITryResult<T> Run() {
 				try {
 					return _func();
 				}

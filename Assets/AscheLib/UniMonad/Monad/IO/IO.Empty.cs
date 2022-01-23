@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public EmptyCore() {
 
 			}
-			public T RunIO() {
+			public T Run() {
 				return default(T);
 			}
 		}

@@ -11,9 +11,9 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public StateResult<TState, TResult> RunState(TState state) {
-				StateResult<TState, TValue> result = _self.RunState(state);
-				return StateResult.Create(result.State, _selector(result.Value).RunState(result.State).Value);
+			public StateResult<TState, TResult> Run(TState state) {
+				StateResult<TState, TValue> result = _self.Run(state);
+				return StateResult.Create(result.State, _selector(result.Value).Run(result.State).Value);
 			}
 		}
 		public static IStateMonad<TState, TResult> SelectMany<TState, TValue, TResult>(this IStateMonad<TState, TValue> self, Func<TValue, IStateMonad<TState, TResult>> selector) {
@@ -29,9 +29,9 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public StateResult<TState, TResult> RunState(TState state) {
-				StateResult<TState, TFirst> firstResult = _self.RunState(state);
-				StateResult<TState, TSecond> secondResult = _selector(firstResult.Value).RunState(firstResult.State);
+			public StateResult<TState, TResult> Run(TState state) {
+				StateResult<TState, TFirst> firstResult = _self.Run(state);
+				StateResult<TState, TSecond> secondResult = _selector(firstResult.Value).Run(firstResult.State);
 				return new StateResult<TState, TResult>(secondResult.State, _projector(firstResult.Value, secondResult.Value));
 			}
 		}

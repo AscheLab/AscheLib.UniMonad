@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public TResult RunReader(TEnvironment environment) {
-				return _selector(_self.RunReader(environment)).RunReader(environment);
+			public TResult Run(TEnvironment environment) {
+				return _selector(_self.Run(environment)).Run(environment);
 			}
 		}
 		public static IReaderMonad<TEnvironment, TResult> SelectMany<TEnvironment, TValue, TResult>(this IReaderMonad<TEnvironment, TValue> self, Func<TValue, IReaderMonad<TEnvironment, TResult>> selector) {
@@ -28,9 +28,9 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public TResult RunReader(TEnvironment environment) {
-				TFirst firstResult = _self.RunReader(environment);
-				TSecond secondResult = _selector(firstResult).RunReader(environment);
+			public TResult Run(TEnvironment environment) {
+				TFirst firstResult = _self.Run(environment);
+				TSecond secondResult = _selector(firstResult).Run(environment);
 				return _projector(firstResult, secondResult);
 			}
 		}

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AscheLib.UniMonad {
 	public interface IIOMonad<T> {
-		T RunIO();
+		T Run();
 	}
 	public static partial class IO {
 

@@ -9,8 +9,8 @@ namespace AscheLib.UniMonad {
 			public MergeCore(IOptionMonad<T>[] sources) {
 				_sources = sources;
 			}
-			public IOptionResult<T[]> RunOption() {
-				List<IOptionResult<T>> resultList = _sources.Select(source => source.RunOption()).ToList();
+			public IOptionResult<T[]> Run() {
+				List<IOptionResult<T>> resultList = _sources.Select(source => source.Run()).ToList();
 				if(resultList.All(result => !result.IsNone)) return new JustResult<T[]>(resultList.Select(result => result.Value).ToArray());
 				return NoneResult<T[]>.Default;
 			}

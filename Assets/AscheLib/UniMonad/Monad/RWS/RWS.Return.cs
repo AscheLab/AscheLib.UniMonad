@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public ReturnCore(TValue value) {
 				_value = value;
 			}
-			public RWSResult<TOutput, TState, TValue> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TValue> Run(TEnvironment environment, TState state) {
 				return RWSResult.Create(_value, new TOutput[0], state);
 			}
 		}

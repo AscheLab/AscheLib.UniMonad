@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public EmptyCore() {
 
 			}
-			public IEitherResult<TLeft, TRight> RunEither() {
+			public IEitherResult<TLeft, TRight> Run() {
 				return new RightResult<TLeft, TRight>(default(TRight));
 			}
 		}

@@ -7,7 +7,7 @@ namespace AscheLib.UniMonad {
 		public static void Execute<T>(this ITryMonad<T> self) {
 			ITryResult<T> selfResult;
 			try {
-				selfResult = self.RunTry();
+				selfResult = self.Run();
 				if(selfResult.IsFaulted) {
 					return;
 				}
@@ -22,7 +22,7 @@ namespace AscheLib.UniMonad {
 		public static void Execute<T>(this ITryMonad<T> self, Action<T> onSuccess) {
 			ITryResult<T> selfResult;
 			try {
-				selfResult = self.RunTry();
+				selfResult = self.Run();
 				if(selfResult.IsFaulted) {
 					throw(selfResult.Exception);
 				}
@@ -38,7 +38,7 @@ namespace AscheLib.UniMonad {
 		public static void Execute<T>(this ITryMonad<T> self, Action<T> onSuccess, Action<Exception> onError) {
 			ITryResult<T> selfResult;
 			try {
-				selfResult = self.RunTry();
+				selfResult = self.Run();
 				if(selfResult.IsFaulted) {
 					onError(selfResult.Exception);
 					return;
@@ -56,7 +56,7 @@ namespace AscheLib.UniMonad {
 		public static void Execute<T, TException>(this ITryMonad<T> self, Action<T> onSuccess, Action<TException> onError) where TException : Exception {
 			ITryResult<T> selfResult;
 			try {
-				selfResult = self.RunTry();
+				selfResult = self.Run();
 				if(selfResult.IsFaulted) {
 					if(selfResult.Exception is TException) {
 						onError(selfResult.Exception as TException);

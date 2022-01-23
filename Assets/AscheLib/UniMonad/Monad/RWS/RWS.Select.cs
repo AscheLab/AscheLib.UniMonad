@@ -12,8 +12,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public RWSResult<TOutput, TState, TResult> RunRWS(TEnvironment environment, TState state) {
-				RWSResult<TOutput, TState, TValue> selfResult = _self.RunRWS(environment, state);
+			public RWSResult<TOutput, TState, TResult> Run(TEnvironment environment, TState state) {
+				RWSResult<TOutput, TState, TValue> selfResult = _self.Run(environment, state);
 				return RWSResult.Create(_selector(selfResult.Value), selfResult.Output, selfResult.State ?? state);
 			}
 		}

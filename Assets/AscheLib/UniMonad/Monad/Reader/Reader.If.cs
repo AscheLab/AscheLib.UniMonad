@@ -13,13 +13,13 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public TValue RunReader(TEnvironment environment) {
-				TValue result = _self.RunReader(environment);
+			public TValue Run(TEnvironment environment) {
+				TValue result = _self.Run(environment);
 				if(_selector(result)) {
 					return result;
 				}
 				else {
-					return _elseSource.RunReader(environment);
+					return _elseSource.Run(environment);
 				}
 			}
 		}

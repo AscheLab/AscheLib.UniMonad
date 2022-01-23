@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AscheLib.UniMonad {
 	public interface IEitherMonad<TLeft, TRight> {
-		IEitherResult<TLeft, TRight> RunEither();
+		IEitherResult<TLeft, TRight> Run();
 	}
 	public interface IEitherResult<TLeft, TRight> {
 		TLeft Left { get; }

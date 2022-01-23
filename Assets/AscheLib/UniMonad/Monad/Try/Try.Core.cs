@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AscheLib.UniMonad {
 	public interface ITryMonad<T> {
-		ITryResult<T> RunTry();
+		ITryResult<T> Run();
 	}
 	public interface ITryResult<T> {
 		T Value { get; }

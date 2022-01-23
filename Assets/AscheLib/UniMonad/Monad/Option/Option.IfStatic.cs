@@ -13,12 +13,12 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public IOptionResult<T> RunOption() {
+			public IOptionResult<T> Run() {
 				if(_selector()) {
-					return _thenSource.RunOption();
+					return _thenSource.Run();
 				}
 				else {
-					return _elseSource.RunOption();
+					return _elseSource.Run();
 				}
 			}
 		}
@@ -33,9 +33,9 @@ namespace AscheLib.UniMonad {
 				_thenSource = thenSource;
 				_selector = selector;
 			}
-			public IOptionResult<T> RunOption() {
+			public IOptionResult<T> Run() {
 				if(_selector()) {
-					return _thenSource.RunOption();
+					return _thenSource.Run();
 				}
 				else {
 					return NoneResult<T>.Default;

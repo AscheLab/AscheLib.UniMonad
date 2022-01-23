@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public IOptionResult<T> RunOption() {
-				IOptionResult<T> result = _self.RunOption();
+			public IOptionResult<T> Run() {
+				IOptionResult<T> result = _self.Run();
 				if(!result.IsNone) _action(result.Value);
 				return result;
 			}
