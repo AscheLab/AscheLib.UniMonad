@@ -38,6 +38,13 @@ namespace AscheLib.UniMonad {
 		}
 	}
 
+#if UNITY_2020_1_OR_NEWER
+	[Serializable] public class SerializableTryProperty<T> : SerializableTryPropertyBase<T> {
+		public SerializableTryProperty () : base() { }
+		public SerializableTryProperty (T succeededValue, string faultedMessage, bool isSucceeded) : base(succeededValue, faultedMessage, isSucceeded) { }
+	}
+#endif
+
 	[Serializable]
 	public class IntSerializableTryProperty : SerializableTryPropertyBase<int> {
 		public IntSerializableTryProperty() : base() { }

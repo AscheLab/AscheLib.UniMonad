@@ -35,6 +35,13 @@ namespace AscheLib.UniMonad {
 		}
 	}
 
+#if UNITY_2020_1_OR_NEWER
+	[Serializable] public class SerializableOptionProperty<T> : SerializableOptionPropertyBase<T> {
+		public SerializableOptionProperty () : base() { }
+		public SerializableOptionProperty (T value, bool isJust) : base(value, isJust) { }
+	}
+#endif
+
 	[Serializable]
 	public class IntSerializableOptionProperty : SerializableOptionPropertyBase<int> {
 		public IntSerializableOptionProperty() : base() { }

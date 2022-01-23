@@ -38,6 +38,13 @@ namespace AscheLib.UniMonad {
 		}
 	}
 
+#if UNITY_2020_1_OR_NEWER
+	[Serializable] public class SerializableEitherProperty<TLeft, TRight> : SerializableEitherPropertyBase<TLeft, TRight> {
+		public SerializableEitherProperty () : base() { }
+		public SerializableEitherProperty (TLeft left, TRight right, bool isRight) : base(left, right, isRight) { }
+	}
+#endif
+
 	[Serializable]
 	public class LeftIntRightIntSerializableEitherProperty : SerializableEitherPropertyBase<int, int> {
 		public LeftIntRightIntSerializableEitherProperty() : base() { }
