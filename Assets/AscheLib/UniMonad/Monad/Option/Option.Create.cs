@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public CreateCore(Func<IOptionResult<T>> func) {
 				_func = func;
 			}
-			public IOptionResult<T> RunOption() {
+			public IOptionResult<T> Run() {
 				return _func();
 			}
 		}

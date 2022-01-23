@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public TryCreateCore(Func<T> selector) {
 				_selector = selector;
 			}
-			public IOptionResult<T> RunOption() {
+			public IOptionResult<T> Run() {
 				try {
 					return new JustResult<T>(_selector());
 				}

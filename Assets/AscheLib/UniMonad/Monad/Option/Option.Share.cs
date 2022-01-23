@@ -11,11 +11,11 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_lazy = Lazy.Create<IOptionResult<T>>(RunSelf);
 			}
-			public IOptionResult<T> RunOption() {
+			public IOptionResult<T> Run() {
 				return _lazy.Value;
 			}
 			IOptionResult<T> RunSelf() {
-				return _self.RunOption();
+				return _self.Run();
 			}
 		}
 		public static IOptionMonad<T> Share<T>(this IOptionMonad<T> self) {

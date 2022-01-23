@@ -28,15 +28,22 @@ namespace AscheLib.UniMonad {
 			_isSucceeded = isSucceeded;
 		}
 
-		public ITryResult<T> RunTry() {
+		public ITryResult<T> Run() {
 			if (_isSucceeded) {
-				return Try.Return(_succeededValue).RunTry();
+				return Try.Return(_succeededValue).Run();
 			}
 			else {
-				return Try.Throw<T>(new Exception(_faultedMessage)).RunTry();
+				return Try.Throw<T>(new Exception(_faultedMessage)).Run();
 			}
 		}
 	}
+
+#if UNITY_2020_1_OR_NEWER
+	[Serializable] public class SerializableTryProperty<T> : SerializableTryPropertyBase<T> {
+		public SerializableTryProperty () : base() { }
+		public SerializableTryProperty (T succeededValue, string faultedMessage, bool isSucceeded) : base(succeededValue, faultedMessage, isSucceeded) { }
+	}
+#endif
 
 	[Serializable]
 	public class IntSerializableTryProperty : SerializableTryPropertyBase<int> {

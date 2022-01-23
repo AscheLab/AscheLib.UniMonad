@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public TResult RunIdentity() {
-				return _selector(_self.RunIdentity()).RunIdentity();
+			public TResult Run() {
+				return _selector(_self.Run()).Run();
 			}
 		}
 		public static IIdentityMonad<TResult> SelectMany<T, TResult>(this IIdentityMonad<T> self, Func<T, IIdentityMonad<TResult>> selector) {
@@ -28,9 +28,9 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public TResult RunIdentity() {
-				TFirst selfResult = _self.RunIdentity();
-				TSecond secondResult = _selector(selfResult).RunIdentity();
+			public TResult Run() {
+				TFirst selfResult = _self.Run();
+				TSecond secondResult = _selector(selfResult).Run();
 				return _projector(selfResult, secondResult);
 			}
 		}

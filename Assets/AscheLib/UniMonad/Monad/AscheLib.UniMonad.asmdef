@@ -1,0 +1,14 @@
+{
+    "name": "AscheLib.UniMonad",
+    "references": [
+        "AscheLib.Common"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

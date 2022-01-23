@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public NoneCore() {
 
 			}
-			public IOptionResult<T> RunOption() {
+			public IOptionResult<T> Run() {
 				return NoneResult<T>.Default;
 			}
 		}

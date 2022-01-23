@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public TResult RunIdentity() {
-				return _selector(_self.RunEither().Left);
+			public TResult Run() {
+				return _selector(_self.Run().Left);
 			}
 		}
 		public static IIdentityMonad<TResult> MatchLeft<TLeft, TRight, TResult>(this IEitherMonad<TLeft, TRight> self, Func<TLeft, TResult> selector) {
@@ -26,8 +26,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public Unit RunIdentity() {
-				IEitherResult<TLeft, TRight> result = _self.RunEither();
+			public Unit Run() {
+				IEitherResult<TLeft, TRight> result = _self.Run();
 				_action(result.Left);
 				return Unit.Default;
 			}
@@ -45,8 +45,8 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_defaultValue = defaultValue;
 			}
-			public TResult RunIdentity() {
-				IEitherResult<TLeft, TRight> result = _self.RunEither();
+			public TResult Run() {
+				IEitherResult<TLeft, TRight> result = _self.Run();
 				return result.IsLeft ? _selector(result.Left) : _defaultValue;
 			}
 		}

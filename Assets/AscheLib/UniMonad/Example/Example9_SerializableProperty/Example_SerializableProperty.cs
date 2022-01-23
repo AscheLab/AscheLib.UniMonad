@@ -21,6 +21,19 @@ public class Example_SerializableProperty : MonoBehaviour {
 		}
 	}
 
+#if UNITY_2020_1_OR_NEWER
+	// Display IOptionMonad<Human> on Inspector
+	[SerializeField]
+	SerializableOptionProperty<Human> _optionTest = new SerializableOptionProperty<Human>(new Human("John", "programmer", 24), true);
+
+	// Display IEitherMonad<string, Vector3> on Inspector
+	[SerializeField]
+	SerializableEitherProperty<string, Vector3> _eitherTest = new SerializableEitherProperty<string, Vector3>("this is left", new Vector3(), true);
+
+	// Display ITryMonad<Human> on Inspector
+	[SerializeField]
+	SerializableTryProperty<Human> _tryTest = new SerializableTryProperty<Human>(new Human("John", "programmer", 24), "Nothing data", true);
+#else
 	// Prepare Inspector viewable OptionManad class for Human class
 	[Serializable]
 	public class HumanSerializableOptionProperty : SerializableOptionPropertyBase<Human> {
@@ -44,7 +57,7 @@ public class Example_SerializableProperty : MonoBehaviour {
 	// Display ITryMonad<Human> on Inspector
 	[SerializeField]
 	HumanSerializableTryProperty _tryTest = new HumanSerializableTryProperty(new Human("John", "programmer", 24), "Nothing data", true);
-
+#endif
 	// SerializableProperty usage example 1 : Edit the value in Inspector which doesn't know if it exists or not and use it as OptionMonad
 	public void Example1 () {
 		_optionTest.Execute(v => Debug.Log(string.Format("I'm {0}, {1} years old {2}.", v._name, v._age, v._job)));

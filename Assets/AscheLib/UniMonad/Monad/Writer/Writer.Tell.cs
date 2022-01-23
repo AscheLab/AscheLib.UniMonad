@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public TellCore(TOutput output) {
 				_output = output;
 			}
-			public WriterResult<TOutput, Unit> RunWriter() {
+			public WriterResult<TOutput, Unit> Run() {
 				return WriterResult.Create(Unit.Default, new TOutput[1] { _output });
 			}
 		}
@@ -24,7 +24,7 @@ namespace AscheLib.UniMonad {
 				_value = value;
 				_output = output;
 			}
-			public WriterResult<TOutput, TValue> RunWriter() {
+			public WriterResult<TOutput, TValue> Run() {
 				return WriterResult.Create(_value, new TOutput[1] { _output });
 			}
 		}
@@ -39,7 +39,7 @@ namespace AscheLib.UniMonad {
 				_value = value;
 				_outputs = outputs;
 			}
-			public WriterResult<TOutput, TValue> RunWriter() {
+			public WriterResult<TOutput, TValue> Run() {
 				return WriterResult.Create(_value, _outputs);
 			}
 		}

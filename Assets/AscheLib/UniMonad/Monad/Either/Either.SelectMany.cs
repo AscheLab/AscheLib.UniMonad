@@ -11,13 +11,13 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public IEitherResult<TLeft, TResultRight> RunEither() {
-				IEitherResult<TLeft, TRight> result = _self.RunEither();
+			public IEitherResult<TLeft, TResultRight> Run() {
+				IEitherResult<TLeft, TRight> result = _self.Run();
 				if(result.IsLeft) {
 					return new LeftResult<TLeft, TResultRight>(result.Left);
 				}
 				else {
-					return _selector(result.Right).RunEither();
+					return _selector(result.Right).Run();
 				}
 			}
 		}
@@ -34,12 +34,12 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public IEitherResult<TLeft, TResultRight> RunEither() {
-				IEitherResult<TLeft, TFirstRight> selfResult = _self.RunEither();
+			public IEitherResult<TLeft, TResultRight> Run() {
+				IEitherResult<TLeft, TFirstRight> selfResult = _self.Run();
 				if(selfResult.IsLeft) {
 					return new LeftResult<TLeft, TResultRight>(selfResult.Left);
 				}
-				IEitherResult<TLeft, TSecondResult> secondResult = _selector(selfResult.Right).RunEither();
+				IEitherResult<TLeft, TSecondResult> secondResult = _selector(selfResult.Right).Run();
 				if(secondResult.IsLeft) {
 					return new LeftResult<TLeft, TResultRight>(secondResult.Left);
 				}

@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public EmptyCore() {
 
 			}
-			public ITryResult<T> RunTry() {
+			public ITryResult<T> Run() {
 				return new Success<T>(default(T));
 			}
 		}

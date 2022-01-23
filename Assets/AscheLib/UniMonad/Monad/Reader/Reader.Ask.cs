@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public AskReturnNoArgumentCore() {
 
 			}
-			public TEnvironment RunReader(TEnvironment environment) {
+			public TEnvironment Run(TEnvironment environment) {
 				return environment;
 			}
 		}
@@ -21,7 +21,7 @@ namespace AscheLib.UniMonad {
 			public AskReturnEnvironmentSelectCore(Func<TEnvironment, TEnvironment> selector) {
 				_selector = selector;
 			}
-			public TEnvironment RunReader(TEnvironment environment) {
+			public TEnvironment Run(TEnvironment environment) {
 				return _selector(environment);
 			}
 		}
@@ -33,7 +33,7 @@ namespace AscheLib.UniMonad {
 			public AskCore(IReaderMonad<TEnvironment, TValue> self) {
 
 			}
-			public TEnvironment RunReader(TEnvironment environment) {
+			public TEnvironment Run(TEnvironment environment) {
 				return environment;
 			}
 		}
@@ -46,7 +46,7 @@ namespace AscheLib.UniMonad {
 			public AskSelectCore(IReaderMonad<TEnvironment, TValue> self, Func<TEnvironment, TEnvironment> selector) {
 				_selector = selector;
 			}
-			public TEnvironment RunReader(TEnvironment environment) {
+			public TEnvironment Run(TEnvironment environment) {
 				return _selector(environment);
 			}
 		}

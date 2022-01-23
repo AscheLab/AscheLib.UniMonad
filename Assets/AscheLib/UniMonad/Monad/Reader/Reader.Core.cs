@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AscheLib.UniMonad {
 	public interface IReaderMonad<TEnvironment, TValue> {
-		TValue RunReader(TEnvironment environment);
+		TValue Run(TEnvironment environment);
 	}
 	public static partial class Reader {
 

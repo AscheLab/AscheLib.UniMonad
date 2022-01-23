@@ -12,9 +12,9 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public RWSResult<TOutput, TState, TResult> RunRWS(TEnvironment environment, TState state) {
-				RWSResult<TOutput, TState, TValue> selfResult = _self.RunRWS(environment, state);
-				return _selector(selfResult.Value).RunRWS(environment, selfResult.State ?? state);
+			public RWSResult<TOutput, TState, TResult> Run(TEnvironment environment, TState state) {
+				RWSResult<TOutput, TState, TValue> selfResult = _self.Run(environment, state);
+				return _selector(selfResult.Value).Run(environment, selfResult.State ?? state);
 			}
 		}
 		public static IRWSMonad<TEnvironment, TOutput, TState, TResult> SelectMany<TEnvironment, TOutput, TState, TValue, TResult>(this IRWSMonad<TEnvironment, TOutput, TState, TValue> self, Func<TValue, IRWSMonad<TEnvironment, TOutput, TState, TResult>> selector)
@@ -32,9 +32,9 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public RWSResult<TOutput, TState, TResult> RunRWS(TEnvironment environment, TState state) {
-				RWSResult<TOutput, TState, TFirst> selfResult = _self.RunRWS(environment, state);
-				RWSResult<TOutput, TState, TSecond> secondResult = _selector(selfResult.Value).RunRWS(environment, selfResult.State ?? state);
+			public RWSResult<TOutput, TState, TResult> Run(TEnvironment environment, TState state) {
+				RWSResult<TOutput, TState, TFirst> selfResult = _self.Run(environment, state);
+				RWSResult<TOutput, TState, TSecond> secondResult = _selector(selfResult.Value).Run(environment, selfResult.State ?? state);
 				return RWSResult.Create(_projector(selfResult.Value, secondResult.Value), selfResult.Output.Concat(secondResult.Output), secondResult.State ?? selfResult.State ?? state);
 			}
 		}

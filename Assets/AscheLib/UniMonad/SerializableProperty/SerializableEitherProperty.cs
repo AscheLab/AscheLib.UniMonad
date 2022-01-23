@@ -28,15 +28,22 @@ namespace AscheLib.UniMonad {
 			_isRight = isRight;
 		}
 
-		public IEitherResult<TLeft, TRight> RunEither () {
+		public IEitherResult<TLeft, TRight> Run () {
 			if(_isRight) {
-				return Either.ReturnRight<TLeft, TRight>(_right).RunEither();
+				return Either.ReturnRight<TLeft, TRight>(_right).Run();
 			}
 			else {
-				return Either.ReturnLeft<TLeft, TRight>(_left).RunEither();
+				return Either.ReturnLeft<TLeft, TRight>(_left).Run();
 			}
 		}
 	}
+
+#if UNITY_2020_1_OR_NEWER
+	[Serializable] public class SerializableEitherProperty<TLeft, TRight> : SerializableEitherPropertyBase<TLeft, TRight> {
+		public SerializableEitherProperty () : base() { }
+		public SerializableEitherProperty (TLeft left, TRight right, bool isRight) : base(left, right, isRight) { }
+	}
+#endif
 
 	[Serializable]
 	public class LeftIntRightIntSerializableEitherProperty : SerializableEitherPropertyBase<int, int> {

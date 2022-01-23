@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public GetReturnNoArgumentCore() {
 
 			}
-			public StateResult<TState, TState> RunState(TState state) {
+			public StateResult<TState, TState> Run(TState state) {
 				return StateResult.Create(state, state);
 			}
 		}
@@ -21,7 +21,7 @@ namespace AscheLib.UniMonad {
 			public GetReturnSelectCore(Func<TState, TState> selector) {
 				_selector = selector;
 			}
-			public StateResult<TState, TState> RunState(TState state) {
+			public StateResult<TState, TState> Run(TState state) {
 				return StateResult.Create(state, _selector(state));
 			}
 		}

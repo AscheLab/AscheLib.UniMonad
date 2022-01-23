@@ -11,10 +11,10 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public ITryResult<TResult> RunTry() {
+			public ITryResult<TResult> Run() {
 				ITryResult<T> selfResult;
 				try {
-					selfResult = _self.RunTry();
+					selfResult = _self.Run();
 					if(selfResult.IsFaulted)
 						return new Failure<TResult>(selfResult.Exception);
 				}
@@ -23,7 +23,7 @@ namespace AscheLib.UniMonad {
 				}
 				TResult resultValue;
 				try {
-					resultValue = _selector(selfResult.Value).RunTry().Value;
+					resultValue = _selector(selfResult.Value).Run().Value;
 				}
 				catch(Exception e) {
 					return new Failure<TResult>(e);
@@ -44,10 +44,10 @@ namespace AscheLib.UniMonad {
 				_selector = selector;
 				_projector = projector;
 			}
-			public ITryResult<TResult> RunTry() {
+			public ITryResult<TResult> Run() {
 				ITryResult<TFirst> selfResult;
 				try {
-					selfResult = _self.RunTry();
+					selfResult = _self.Run();
 					if(selfResult.IsFaulted)
 						return new Failure<TResult>(selfResult.Exception);
 				}
@@ -57,7 +57,7 @@ namespace AscheLib.UniMonad {
 
 				ITryResult<TSecond> secondResult;
 				try {
-					secondResult = _selector(selfResult.Value).RunTry();
+					secondResult = _selector(selfResult.Value).Run();
 					if(secondResult.IsFaulted)
 						return new Failure<TResult>(secondResult.Exception);
 				}

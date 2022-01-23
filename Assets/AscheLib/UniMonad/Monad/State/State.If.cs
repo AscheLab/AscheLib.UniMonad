@@ -13,13 +13,13 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public StateResult<TState, TValue> RunState(TState state) {
-				StateResult<TState, TValue> result = _self.RunState(state);
+			public StateResult<TState, TValue> Run(TState state) {
+				StateResult<TState, TValue> result = _self.Run(state);
 				if(_selector(result)) {
 					return result;
 				}
 				else {
-					return _elseSource.RunState(state);
+					return _elseSource.Run(state);
 				}
 			}
 		}

@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_action = action;
 			}
-			public IEitherResult<TLeft, TRight> RunEither() {
-				IEitherResult<TLeft, TRight> result = _self.RunEither();
+			public IEitherResult<TLeft, TRight> Run() {
+				IEitherResult<TLeft, TRight> result = _self.Run();
 				if(result.IsRight) _action(result.Right);
 				return result;
 			}

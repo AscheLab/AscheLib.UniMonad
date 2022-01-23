@@ -13,15 +13,15 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public ITryResult<T> RunTry() {
+			public ITryResult<T> Run() {
 				ITryResult<T> selfResult;
 				try {
-					selfResult = _self.RunTry();
+					selfResult = _self.Run();
 					if(_selector(selfResult)) {
 						return selfResult;
 					}
 					else {
-						return _elseSource.RunTry();
+						return _elseSource.Run();
 					}
 				}
 				catch(Exception e) {

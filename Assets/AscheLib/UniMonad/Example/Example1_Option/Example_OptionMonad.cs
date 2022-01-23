@@ -9,7 +9,7 @@ public class Example_OptionMonad : MonoBehaviour {
 	// Generate OptionMonad to get value from Dictionary
 	IOptionMonad<TValue> OptionValue<TKey, TValue>(Dictionary<TKey, TValue> source, TKey key) {
 		if(source.ContainsKey(key))
-			return Option.Just(source[key]);
+			return Option.Return(source[key]);
 		else
 			return Option.None<TValue>();
 	}

@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public StateResult<TState, TValue> RunState(TState state) {
-				StateResult<TState, TValue> result = _self.RunState(state);
+			public StateResult<TState, TValue> Run(TState state) {
+				StateResult<TState, TValue> result = _self.Run(state);
 				return StateResult.Create(_selector(result.State), result.Value);
 			}
 		}

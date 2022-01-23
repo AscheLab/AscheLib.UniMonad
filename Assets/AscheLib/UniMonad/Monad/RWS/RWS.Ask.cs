@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public AskReturnNoArgumentCore() {
 
 			}
-			public RWSResult<TOutput, TState, TEnvironment> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TEnvironment> Run(TEnvironment environment, TState state) {
 				return RWSResult.Create(environment, new TOutput[0], state);
 			}
 		}
@@ -21,7 +21,7 @@ namespace AscheLib.UniMonad {
 			public AskReturnSelectCore(Func<TEnvironment, TEnvironment> selector) {
 				_selector = selector;
 			}
-			public RWSResult<TOutput, TState, TEnvironment> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TEnvironment> Run(TEnvironment environment, TState state) {
 				return RWSResult.Create(_selector(environment), new TOutput[0], state);
 			}
 		}
@@ -33,7 +33,7 @@ namespace AscheLib.UniMonad {
 			public AskCore(IRWSMonad<TEnvironment, TOutput, TState, TValue> self) {
 
 			}
-			public RWSResult<TOutput, TState, TEnvironment> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TEnvironment> Run(TEnvironment environment, TState state) {
 				return RWSResult.Create(environment, new TOutput[0], state);
 			}
 		}
@@ -46,7 +46,7 @@ namespace AscheLib.UniMonad {
 			public AskSelectCore(IRWSMonad<TEnvironment, TOutput, TState, TValue> self, Func<TEnvironment, TEnvironment> selector) {
 				_selector = selector;
 			}
-			public RWSResult<TOutput, TState, TEnvironment> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TEnvironment> Run(TEnvironment environment, TState state) {
 				return RWSResult.Create(_selector(environment), new TOutput[0], state);
 			}
 		}

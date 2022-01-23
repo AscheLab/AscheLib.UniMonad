@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public TResult RunIO() {
-				return _selector(_self.RunIO());
+			public TResult Run() {
+				return _selector(_self.Run());
 			}
 		}
 		public static IIOMonad<TResult> Select<T, TResult>(this IIOMonad<T> self, Func<T, TResult> selector) {

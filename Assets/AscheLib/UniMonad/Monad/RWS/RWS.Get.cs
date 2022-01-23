@@ -8,7 +8,7 @@ namespace AscheLib.UniMonad {
 			public GetReturnNoArgumentCore() {
 
 			}
-			public RWSResult<TOutput, TState, TState> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TState> Run(TEnvironment environment, TState state) {
 				return RWSResult.Create(state, new TOutput[0], state);
 			}
 		}
@@ -21,7 +21,7 @@ namespace AscheLib.UniMonad {
 			public GetReturnSelectCore(Func<TState, TState> selector) {
 				_selector = selector;
 			}
-			public RWSResult<TOutput, TState, TState> RunRWS(TEnvironment environment, TState state) {
+			public RWSResult<TOutput, TState, TState> Run(TEnvironment environment, TState state) {
 				return RWSResult.Create(state, new TOutput[0], _selector(state));
 			}
 		}

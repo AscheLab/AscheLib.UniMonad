@@ -5,10 +5,10 @@ using System.Linq;
 namespace AscheLib.UniMonad {
 	public static partial class Identity {
 		public static void Execute<T>(this IIdentityMonad<T> self) {
-			self.RunIdentity();
+			self.Run();
 		}
 		public static void Execute<T>(this IIdentityMonad<T> self, Action<T> onValue) {
-			T result = self.RunIdentity();
+			T result = self.Run();
 			onValue(result);
 		}
 	}

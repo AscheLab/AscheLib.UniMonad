@@ -13,11 +13,11 @@ namespace AscheLib.UniMonad {
 				_environment = environmen;
 				_lazy = Lazy.Create<TValue>(RunSelf);
 			}
-			public TValue RunIdentity() {
+			public TValue Run() {
 				return _lazy.Value;
 			}
 			TValue RunSelf() {
-				return _self.RunReader(_environment);
+				return _self.Run(_environment);
 			}
 		}
 		public static IIdentityMonad<TValue> Share<TEnvironment, TValue>(this IReaderMonad<TEnvironment, TValue> self, TEnvironment environment) {

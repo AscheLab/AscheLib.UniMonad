@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public CreateCore(Func<WriterResult<TOutput, TValue>> func) {
 				_func = func;
 			}
-			public WriterResult<TOutput, TValue> RunWriter() {
+			public WriterResult<TOutput, TValue> Run() {
 				return _func();
 			}
 		}

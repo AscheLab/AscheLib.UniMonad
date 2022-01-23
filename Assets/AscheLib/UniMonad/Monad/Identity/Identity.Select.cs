@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public TResult RunIdentity() {
-				return _selector(_self.RunIdentity());
+			public TResult Run() {
+				return _selector(_self.Run());
 			}
 		}
 		public static IIdentityMonad<TResult> Select<T, TResult>(this IIdentityMonad<T> self, Func<T, TResult> selector) {

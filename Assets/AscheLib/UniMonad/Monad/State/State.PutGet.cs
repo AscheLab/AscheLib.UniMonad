@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public PutGetCore(TState state) {
 				_state = state;
 			}
-			public StateResult<TState, TState> RunState(TState state) {
+			public StateResult<TState, TState> Run(TState state) {
 				return StateResult.Create(_state, _state);
 			}
 		}

@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace AscheLib.UniMonad {
 	public interface IWriterMonad<TOutput, TValue> {
-		WriterResult<TOutput, TValue> RunWriter();
+		WriterResult<TOutput, TValue> Run();
 	}
-	public class WriterResult<TOutput, TValue> {
+	public struct WriterResult<TOutput, TValue> {
 		public TValue Value { private set; get; }
 		public IEnumerable<TOutput> Output { private set; get; }
 

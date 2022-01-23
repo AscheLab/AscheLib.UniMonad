@@ -5,7 +5,7 @@ using System.Linq;
 namespace AscheLib.UniMonad {
 	public static partial class Option {
 		public static void Execute<T>(this IOptionMonad<T> self) {
-			IOptionResult<T> selfResult = self.RunOption();
+			IOptionResult<T> selfResult = self.Run();
 			if (selfResult.IsNone) {
 				return;
 			}
@@ -14,7 +14,7 @@ namespace AscheLib.UniMonad {
 			}
 		}
 		public static void Execute<T>(this IOptionMonad<T> self, Action<T> onJust) {
-			IOptionResult<T> selfResult = self.RunOption();
+			IOptionResult<T> selfResult = self.Run();
 			if (selfResult.IsNone) {
 				return;
 			}
@@ -24,7 +24,7 @@ namespace AscheLib.UniMonad {
 			}
 		}
 		public static void Execute<T>(this IOptionMonad<T> self, Action<T> onJust, Action onNone) {
-			IOptionResult<T> selfResult = self.RunOption();
+			IOptionResult<T> selfResult = self.Run();
 			if (selfResult.IsNone) {
 				onNone();
 				return;

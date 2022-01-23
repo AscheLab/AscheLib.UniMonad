@@ -13,13 +13,13 @@ namespace AscheLib.UniMonad {
 				_elseSource = elseSource;
 				_selector = selector;
 			}
-			public WriterResult<TOutput, TValue> RunWriter() {
-				WriterResult<TOutput, TValue> result = _self.RunWriter();
+			public WriterResult<TOutput, TValue> Run() {
+				WriterResult<TOutput, TValue> result = _self.Run();
 				if(_selector(result)) {
 					return result;
 				}
 				else {
-					return _elseSource.RunWriter();
+					return _elseSource.Run();
 				}
 			}
 		}

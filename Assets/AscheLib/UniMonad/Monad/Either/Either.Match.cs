@@ -13,8 +13,8 @@ namespace AscheLib.UniMonad {
 				_leftSelector = leftSelector;
 				_rightSelector = rightSelector;
 			}
-			public TResult RunIdentity() {
-				var result = _self.RunEither();
+			public TResult Run() {
+				var result = _self.Run();
 				return result.IsLeft ? _leftSelector(result.Left) : _rightSelector(result.Right);
 			}
 		}

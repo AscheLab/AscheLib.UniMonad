@@ -11,10 +11,10 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public IOptionResult<T> RunOption() {
-				IOptionResult<T> result = _self.RunOption();
+			public IOptionResult<T> Run() {
+				IOptionResult<T> result = _self.Run();
 				if(!result.IsNone) return result;
-				return _selector().RunOption();
+				return _selector().Run();
 			}
 		}		
 		public static IOptionMonad<T> Catch<T>(this IOptionMonad<T> self, Func<IOptionMonad<T>> selector) {

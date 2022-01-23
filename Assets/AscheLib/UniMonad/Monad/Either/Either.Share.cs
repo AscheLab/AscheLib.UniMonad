@@ -11,11 +11,11 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_lazy = Lazy.Create<IEitherResult<TLeft, TRight>>(RunSelf);
 			}
-			public IEitherResult<TLeft, TRight> RunEither() {
+			public IEitherResult<TLeft, TRight> Run() {
 				return _lazy.Value;
 			}
 			IEitherResult<TLeft, TRight> RunSelf() {
-				return _self.RunEither();
+				return _self.Run();
 			}
 		}
 		public static IEitherMonad<TLeft, TRight> Share<TLeft, TRight>(this IEitherMonad<TLeft, TRight> self) {

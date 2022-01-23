@@ -11,8 +11,8 @@ namespace AscheLib.UniMonad {
 				_self = self;
 				_selector = selector;
 			}
-			public WriterResult<TOutput, TResult> RunWriter() {
-				WriterResult<TOutput, TValue> result = _self.RunWriter();
+			public WriterResult<TOutput, TResult> Run() {
+				WriterResult<TOutput, TValue> result = _self.Run();
 				return WriterResult.Create(_selector(result.Value), result.Output);
 			}
 		}

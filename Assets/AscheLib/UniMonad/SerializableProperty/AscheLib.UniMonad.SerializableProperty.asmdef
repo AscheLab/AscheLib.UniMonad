@@ -1,0 +1,14 @@
+{
+    "name": "AscheLib.UniMonad.SerializableProperty",
+    "references": [
+        "AscheLib.UniMonad"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

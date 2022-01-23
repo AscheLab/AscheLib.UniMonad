@@ -25,15 +25,22 @@ namespace AscheLib.UniMonad {
 			_isJust = isJust;
 		}
 
-		public IOptionResult<T> RunOption() {
+		public IOptionResult<T> Run() {
 			if (_isJust) {
-				return Option.Just(_value).RunOption();
+				return Option.Return(_value).Run();
 			}
 			else {
-				return Option.None<T>().RunOption();
+				return Option.None<T>().Run();
 			}
 		}
 	}
+
+#if UNITY_2020_1_OR_NEWER
+	[Serializable] public class SerializableOptionProperty<T> : SerializableOptionPropertyBase<T> {
+		public SerializableOptionProperty () : base() { }
+		public SerializableOptionProperty (T value, bool isJust) : base(value, isJust) { }
+	}
+#endif
 
 	[Serializable]
 	public class IntSerializableOptionProperty : SerializableOptionPropertyBase<int> {

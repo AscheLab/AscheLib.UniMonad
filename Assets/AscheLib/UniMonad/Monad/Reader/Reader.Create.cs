@@ -9,7 +9,7 @@ namespace AscheLib.UniMonad {
 			public CreateCore(Func<TEnvironment, TValue> func) {
 				_func = func;
 			}
-			public TValue RunReader(TEnvironment environment) {
+			public TValue Run(TEnvironment environment) {
 				return _func(environment);
 			}
 		}
