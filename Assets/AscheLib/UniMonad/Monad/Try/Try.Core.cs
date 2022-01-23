@@ -13,7 +13,7 @@ namespace AscheLib.UniMonad {
 		bool IsSucceeded { get; }
 	}
 	public static partial class Try {
-		private class Success<T> : ITryResult<T> {
+		private struct Success<T> : ITryResult<T> {
 			public T Value { private set; get; }
 			public Exception Exception { private set; get; }
 			public Success(T value) {
@@ -26,11 +26,10 @@ namespace AscheLib.UniMonad {
 				return Value != null ? Value.ToString() : "[null]";
 			}
 		}
-		private class Failure<T> : ITryResult<T> {
-			public T Value { private set; get; }
+		private struct Failure<T> : ITryResult<T> {
+			public T Value { get { throw Exception; } }
 			public Exception Exception { private set; get; }
 			public Failure(Exception exception) {
-				Value = default(T);
 				Exception = exception;
 			}
 			public bool IsFaulted { get { return true; } }

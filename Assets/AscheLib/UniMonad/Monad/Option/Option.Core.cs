@@ -13,7 +13,7 @@ namespace AscheLib.UniMonad {
 	}
 
 	public static partial class Option {
-		private class JustResult<T> : IOptionResult<T> {
+		private struct JustResult<T> : IOptionResult<T> {
 			public T Value { private set; get; }
 			public bool IsNone { get { return false; } }
 			public bool IsJust { get { return true; } }
@@ -21,12 +21,11 @@ namespace AscheLib.UniMonad {
 				Value = value;
 			}
 		}
-		private class NoneResult<T> : IOptionResult<T> {
+		private struct NoneResult<T> : IOptionResult<T> {
 			public static NoneResult<T> Default = new NoneResult<T>();
 			public T Value { get { throw new Exception(); } }
 			public bool IsNone { get { return true; } }
 			public bool IsJust { get { return false; } }
-			public NoneResult() { }
 		}
 	}
 }

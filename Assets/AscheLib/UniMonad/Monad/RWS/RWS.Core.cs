@@ -6,7 +6,7 @@ namespace AscheLib.UniMonad {
 	public interface IRWSMonad<TEnvironment, TOutput, TState, TValue> {
 		RWSResult<TOutput, TState, TValue> Run(TEnvironment environment, TState state);
 	}
-	public class RWSResult<TOutput, TState, TValue> {
+	public struct RWSResult<TOutput, TState, TValue> {
 		public TValue Value { private set; get; }
 		public IEnumerable<TOutput> Output { private set; get; }
 		public TState State { private set; get; }

@@ -6,7 +6,7 @@ namespace AscheLib.UniMonad {
 	public interface IStateMonad<TState, TValue> {
 		StateResult<TState, TValue> Run(TState state);
 	}
-	public class StateResult<TState, TValue> {
+	public struct StateResult<TState, TValue> {
 		public TState State { private set; get; }
 		public TValue Value { private set; get; }
 		public StateResult(TState state, TValue value) {
