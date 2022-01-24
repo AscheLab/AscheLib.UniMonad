@@ -12,8 +12,16 @@ namespace AscheLib.UniMonad {
 		bool IsFaulted { get; }
 		bool IsSucceeded { get; }
 	}
+	public static class TryResult {
+		public static ITryResult<T> Success<T> (T value) {
+			return new Try.Success<T>(value);
+		}
+		public static ITryResult<T> Failure<T> (Exception exception) {
+			return new Try.Failure<T>(exception);
+		}
+	}
 	public static partial class Try {
-		private struct Success<T> : ITryResult<T> {
+		internal struct Success<T> : ITryResult<T> {
 			public T Value { private set; get; }
 			public Exception Exception { private set; get; }
 			public Success(T value) {
@@ -26,7 +34,7 @@ namespace AscheLib.UniMonad {
 				return Value != null ? Value.ToString() : "[null]";
 			}
 		}
-		private struct Failure<T> : ITryResult<T> {
+		internal struct Failure<T> : ITryResult<T> {
 			public T Value { get { throw Exception; } }
 			public Exception Exception { private set; get; }
 			public Failure(Exception exception) {
