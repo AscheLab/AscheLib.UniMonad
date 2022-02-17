@@ -19,7 +19,7 @@ Find the manifest.json file in the Packages folder of your project and edit it t
   ],
   "dependencies": {
     "com.aschelab.common": "1.0.5",
-    "com.aschelab.unimonad": "4.0.0",
+    "com.aschelab.unimonad": "4.1.0",
   ...
   }
 ```
